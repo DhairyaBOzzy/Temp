@@ -1,0 +1,486 @@
+/* Ultra-Modern Futuristic UI Styling for F1 Analytics Dashboard */
+
+/* Base styling */
+* {
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Define neon colors */
+:root {
+    --neon-red: #E20600;
+    --neon-blue: #00C3FF;
+    --neon-green: #21FC0D;
+    --dark-bg: #0A0F16;
+    --panel-bg: rgba(19, 30, 47, 0.7);
+    --card-bg: rgba(16, 24, 38, 0.85);
+    --highlight-gradient: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-red);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff4d4d;
+}
+
+/* Main container styling with grid background */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.main .block-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(10, 15, 22, 0.95), rgba(10, 15, 22, 0.95)),
+        repeating-linear-gradient(rgba(226, 6, 0, 0.07) 0px, transparent 1px, transparent 50px, rgba(226, 6, 0, 0.07) 51px),
+        repeating-linear-gradient(90deg, rgba(226, 6, 0, 0.05) 0px, transparent 1px, transparent 50px, rgba(226, 6, 0, 0.05) 51px);
+    z-index: -1;
+}
+
+/* App header with F1 logo styling */
+.app-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(226, 6, 0, 0.3);
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.app-header::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--neon-red) 20%, 
+        var(--neon-blue) 50%, 
+        var(--neon-green) 80%, 
+        transparent);
+}
+
+.f1-logo {
+    height: 40px;
+    margin-right: 15px;
+    filter: drop-shadow(0 0 5px rgba(226, 6, 0, 0.7));
+}
+
+/* Glow effect for neon elements */
+.neon-glow {
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.red-glow {
+    color: var(--neon-red);
+    filter: drop-shadow(0 0 5px var(--neon-red));
+}
+
+.blue-glow {
+    color: var(--neon-blue);
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+}
+
+.green-glow {
+    color: var(--neon-green);
+    filter: drop-shadow(0 0 5px var(--neon-green));
+}
+
+/* Headers and text */
+h1, h2, h3 {
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    background: linear-gradient(90deg, #E20600, #ff8080);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+    padding-bottom: 10px;
+    font-size: 2.5rem !important;
+}
+
+h2 {
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(226, 6, 0, 0.3);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #E20600 !important;
+    margin-top: 20px;
+}
+
+/* Card-like styling for sections */
+div[data-testid="stExpander"] {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+/* Button styling */
+button[kind="primary"] {
+    background-color: #E20600 !important;
+    border-radius: 5px !important;
+    border: none !important;
+    box-shadow: 0 2px 5px rgba(226, 6, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
+}
+
+button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(226, 6, 0, 0.5) !important;
+}
+
+button[kind="secondary"] {
+    border-radius: 5px !important;
+    border: 1px solid rgba(226, 6, 0, 0.5) !important;
+    color: #E20600 !important;
+    background-color: transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+button[kind="secondary"]:hover {
+    background-color: rgba(226, 6, 0, 0.1) !important;
+}
+
+/* Metric styling */
+[data-testid="stMetric"] {
+    background: rgba(19, 30, 47, 0.7);
+    border-radius: 8px;
+    padding: 10px !important;
+    border-left: 3px solid #E20600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+[data-testid="stMetricLabel"] {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #E20600 !important;
+    font-weight: 700 !important;
+}
+
+/* Sidebar styling */
+section[data-testid="stSidebar"] {
+    background-color: #0A0F16 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1rem;
+}
+
+/* Tabs styling */
+button[data-baseweb="tab"] {
+    font-weight: 600 !important;
+    border-radius: 0 !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    background-color: transparent !important;
+    border-bottom: 2px solid #E20600 !important;
+    color: #FFFFFF !important;
+}
+
+/* Progress bar styling */
+.stProgress > div > div > div > div {
+    background-color: #E20600 !important;
+}
+
+/* Tooltip styling */
+div[data-testid="stTooltipIcon"] {
+    color: #E20600 !important;
+}
+
+/* DataFrame/table styling */
+[data-testid="stTable"] {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animation for data loading */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.stSpinner {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Modern F1 Cards */
+.f1-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.f1-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--highlight-gradient);
+    opacity: 0.8;
+}
+
+.f1-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.f1-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.f1-card-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--neon-red);
+}
+
+.f1-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+/* Telemetry Graphs */
+.telemetry-container {
+    background: rgba(10, 15, 22, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.telemetry-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--neon-red), var(--neon-blue), var(--neon-green));
+}
+
+/* Tire Visualization */
+.tire-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.tire {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.tire.soft { background: radial-gradient(circle, rgba(255, 0, 0, 0.8), rgba(100, 0, 0, 0.8)); }
+.tire.medium { background: radial-gradient(circle, rgba(255, 255, 0, 0.8), rgba(100, 100, 0, 0.8)); }
+.tire.hard { background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(100, 100, 100, 0.8)); }
+.tire.intermediate { background: radial-gradient(circle, rgba(0, 255, 0, 0.8), rgba(0, 100, 0, 0.8)); }
+.tire.wet { background: radial-gradient(circle, rgba(0, 0, 255, 0.8), rgba(0, 0, 100, 0.8)); }
+
+.tire::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.tire-label {
+    margin-top: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+/* Driver Comparison Card */
+.driver-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.driver-column {
+    padding: 15px;
+    position: relative;
+}
+
+.driver-column.left {
+    border-right: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.driver-stat {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.stat-value.red { color: var(--neon-red); }
+.stat-value.blue { color: var(--neon-blue); }
+.stat-value.green { color: var(--neon-green); }
+
+/* Circuit Map */
+.circuit-map {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: rgba(10, 15, 22, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.circuit-path {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 80%;
+}
+
+.car-indicator {
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    background: var(--neon-red);
+    border-radius: 2px;
+    transition: all 0.3s linear;
+}
+
+/* Text highlighting */
+::selection {
+    background: rgba(226, 6, 0, 0.3);
+    color: #FFFFFF;
+}
+
+/* Quotes for enhanced look */
+.f1-quote {
+    font-style: italic;
+    padding: 15px;
+    border-left: 3px solid var(--neon-red);
+    margin: 20px 0;
+    background: rgba(19, 30, 47, 0.4);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+}
+
+.f1-quote::before {
+    content: """;
+    font-size: 48px;
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    color: rgba(226, 6, 0, 0.3);
+}
+
+.f1-quote-author {
+    display: block;
+    text-align: right;
+    font-weight: 600;
+    color: var(--neon-blue);
+    margin-top: 10px;
+}
+
+/* Animation Keyframes */
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.5s forwards;
+}

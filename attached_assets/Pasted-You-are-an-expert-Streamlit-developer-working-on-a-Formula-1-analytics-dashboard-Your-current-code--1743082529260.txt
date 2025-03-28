@@ -1,0 +1,53 @@
+You are an expert Streamlit developer working on a Formula 1 analytics dashboard. Your current code produces a TypeError whenever it encounters a Timedelta value (e.g., '0 days 00:01:35.069000') in st.metric(). Specifically, Streamlit only accepts int, float, str, or None values, so you must convert any Timedelta objects to a supported type before displaying them.
+
+Your tasks are:
+
+Fix the Timedelta Error
+
+Identify where Timedelta values (like lap times) are causing errors in all modules (Home, Driver Analysis, Team Analysis, Race Strategy, Machine Learning Insights, Historical Trends).
+
+Convert these Timedelta objects to a string (or a float of total seconds, if desired) so they can be displayed without raising a TypeError.
+
+Thorough Testing
+
+Test all modules thoroughly to ensure no additional errors occur.
+
+Test all possible data selections, including various combinations of drivers, teams, and historical race data, to confirm the dashboard remains error-free.
+
+Create a Futuristic, Interactive UI
+
+Redesign the front end to be futuristic and engaging:
+
+Use vibrant colors and smooth animations.
+
+Incorporate icons, interactive buttons, and subtle hover effects.
+
+Include transitions or minimal animations to make data loading and component updates feel seamless.
+
+Ensure the layout is user-friendly, with a visually appealing design that guides users through the different modules.
+
+Implementation and Documentation
+
+Provide a concise, complete code snippet (or steps) demonstrating how to:
+
+Convert Timedelta values to valid string or numeric formats.
+
+Incorporate the futuristic design elements in Streamlit (including any recommended libraries, if needed).
+
+Include a summary of the changes made to fix the error and enhance the UI.
+
+Outline the test cases you ran to confirm the solution works for all data combinations (drivers, teams, etc.).
+
+Deliver an Error-Free Application
+
+After implementing all fixes and design enhancements, ensure that:
+
+The application starts without any tracebacks or Streamlit errors.
+
+Each page/module loads data correctly.
+
+All visual elements (charts, metrics, tables) appear with futuristic styling and zero errors.
+
+Objective:
+Produce a final Streamlit dashboard code (or detailed instructions) that is fully tested, sleek, modern, and free of Timedelta-related (or any other) errors.
+

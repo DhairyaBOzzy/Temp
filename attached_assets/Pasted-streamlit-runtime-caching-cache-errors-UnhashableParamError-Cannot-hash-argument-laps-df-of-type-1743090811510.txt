@@ -1,0 +1,47 @@
+streamlit.runtime.caching.cache_errors.UnhashableParamError: Cannot hash argument 'laps_df' (of type fastf1.core.Laps) in 'calculate_team_performance_metrics'.
+
+To address this, you can tell Streamlit not to hash this argument by adding a leading underscore to the argument's name in the function signature:
+
+@st.cache_data
+def calculate_team_performance_metrics(_laps_df, ...):
+    ...
+
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 121, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 640, in code_to_exec
+    exec(code, module.__dict__)
+File "/home/runner/workspace/app.py", line 45, in <module>
+    show_team_analysis()
+File "/home/runner/workspace/pages/team_analysis.py", line 161, in show_team_analysis
+    metrics = calculate_team_performance_metrics(laps_df, team)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 219, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 234, in _get_or_create_cached_value
+    value_key = _make_value_key(
+                ^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 458, in _make_value_key
+    raise UnhashableParamError(cache_type, func, arg_name, arg_value, exc)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 450, in _make_value_key
+    update_hash(
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 162, in update_hash
+    ch.update(hasher, val)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 345, in update
+    b = self.to_bytes(obj)
+        ^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 327, in to_bytes
+    b = b"%s:%s" % (tname, self._to_bytes(obj))
+                           ^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 630, in _to_bytes
+    self.update(h, item)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 345, in update
+    b = self.to_bytes(obj)
+        ^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 327, in to_bytes
+    b = b"%s:%s" % (tname, self._to_bytes(obj))
+                           ^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 627, in _to_bytes
+    raise UnhashableTypeError() from ex
